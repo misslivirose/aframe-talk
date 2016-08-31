@@ -1,0 +1,175 @@
+<html>
+
+<head>
+    <title>
+        Coldfront WebVR Talk
+    </title>
+
+    <script src="aframe.min.js"></script>
+    <script src="aframe-text-component.min.js"></script>
+    <script src="pagecomponents.js"></script>
+    <script src="Raleway_Regular.js"></script>
+</head>
+<a-scene>
+    <!-- Asset Setup -->
+    <a-assets>
+        <img id="pic1" src="img\img1.jpg">
+        <img id="gear" src="img\gear.png">
+        <img id="vive" src="img\vive.png">
+        <img id="webvrlogo" src="img\webvr-logo.png">
+        <img id="console" src="img\threecode.png">
+        <img id="sky" src="img\360.jpg">
+
+        <video id="gearvrvid" src="video.mp4" autoplay=false>
+        <a-mixin id="font" text="font: raleway"></a-mixin>
+
+    </a-assets>
+
+    <!-- Static scene elements -->
+    <a-camera position="0 1 0">
+        <a-cursor></a-cursor>
+    </a-camera>
+    <a-light type="ambient" color="#fff"></a-light>
+
+    <a-entity id="stage" visible="true">
+        <a-entity id="path">
+            <a-box width="10" length="10" depth="50" position="0 -5 0" rotation="0 0 0" color="#DCDCDC"></a-box>
+            <a-box width="10" length="10" depth="50" position="20 -5 -25" rotation="0 90 0" color="#DCDCDC"></a-box>
+        </a-entity>
+        <a-box id="ground" width="1" height=".1" color="green" position="0 -10 0" scale="100 100 100 "></a-box>
+        <!-- Tree -->
+        <a-entity id="tree" position="-15, 0, -15">
+            <a-cone color="lightgreen" radius-bottom="5" radius-top="0" height="13" position="0 4 0"></a-cone>
+            <a-cylinder color="brown" position="0 -3 0" height="3"></a-cylinder>
+        </a-entity>
+
+        <a-entity position = " 35, 0, -17.5">
+             <a-cone color="lightgreen" radius-bottom="5" radius-top="0" height="13" position="0 4 0"></a-cone>
+            <a-cylinder color="brown" position="0 -3 0" height="3"></a-cylinder>
+        </a-entity>
+
+
+        <!-- Clouds -->
+        <a-entity position="" rotation="" scale="" visible="">
+            <!-- Large, foreground -->
+            <a-box color="white" opacity="0.65" width="8" depth="12" height="4" material="" geometry="" position="" rotation="" scale=""
+                visible="">
+                <a-animation attribute="position" from="5 32 -80" to="5 32 120" delay="12000" dur="480000" easing="linear" repeat="indefinite"
+                    fill="both"></a-animation>
+            </a-box>
+
+            <a-box color="white" opacity="0.75" width="6" depth="9" height="4" visible="false" material="" geometry="" position="" rotation=""
+                scale="">
+                <a-animation attribute="position" from="10 12 -10" to="10 12 100" delay="1000" dur="360000" easing="linear" repeat="indefinite"
+                    fill="both"></a-animation>
+                <a-animation attribute="visible" to="true" delay="1000" dur="1"></a-animation>
+            </a-box>
+
+            <a-box color="white" opacity="0.8" width="8" depth="12" height="3" material="" geometry="" position="" rotation="" scale=""
+                visible="">
+                <a-animation attribute="position" from="-20 18 -50" to="-20 18 120" delay="200" dur="500000" easing="linear" repeat="indefinite"
+                    fill="both"></a-animation>
+            </a-box>
+
+            <a-box color="white" opacity="0.75" width="5" depth="7" height="3" material="" geometry="" position="" rotation="" scale=""
+                visible="">
+                <a-animation attribute="position" from="26 20 -80" to="26 20 120" delay="20000" dur="480000" easing="linear" repeat="indefinite"
+                    fill="both"></a-animation>
+            </a-box>
+        </a-entity>
+    </a-entity>
+
+    <a-sky id="defaultsky" color="lightblue"></a-sky>
+    <a-sky id="360sky" src="#sky" visible="false"></a-sky>
+
+    <!-- Title -->
+    <a-entity id="title">
+        <a-curvedimage src="#pic1" height="10.0" radius="8" theta-length="120" position="0 3 -5" rotation="0 120 0"></a-curvedimage>
+        <a-entity mixin="font" text="text:Building The VR Web" position="-3.5 0 -5" material="color:white"></a-entity>
+        <a-entity mixin="font" text="text:Liv Erickson" position="-1.5 -1 -5" material="color:black"></a-entity>
+        <a-box click-hide-start color="blue" position="3, -0.5, -4" rotation=" 0 45 0" scale = ".5 .5 .5"></a-box>
+    </a-entity>
+
+    <!-- Devices -->
+    <a-entity id="devices">
+        <a-image click-show-text src="#gear" width="5.0" height="3.0" position="-5 3 -15" rotation="0 45 0" material="transparent:true">
+            <a-entity mixin="font" text="text:Mobile" position="0 -2 0 " visible="false" material="color:black"></a-entity>
+        </a-image>
+        <a-image click-show-text src="#vive" width="5.0" height="3.0" position="5 3 -15" rotation="0 -45 0">
+            <a-entity mixin="font" text="text:Desktop" position="0 -2 0 " visible="false" material="color:black"></a-entity>
+        </a-image>
+        <a-entity mixin="font" text="text:VR Devices" position="-2 3 -15" material="color:black"></a-entity>
+        <a-box click-hide-start color="blue" position="0, -0.5, -15" rotation=" 0 0 0"></a-box>
+        <a-plane color="lightblue" width="20" height="3.25" position="0, 0.4, -21"></a-plane>
+    </a-entity>
+
+    <!-- Why VR -->
+    <a-entity id="whyVR">
+        <a-entity click-change-sky geometry="primitive: sphere" position="-2 0 -30" material="src:#sky" scale="2 2 2"></a-entity>
+        <a-box click-hide-start show-webvr color="blue" position="1 0 -28"></a-box>
+        <a-entity mixin="font" text="text:Why VR?" position = "-10, 0, -22" material="color:black" rotation = "0 45 0" scale = "2 2 2"></a-entity>
+    </a-entity>
+
+    <!-- WebVR -->
+    <a-entity id="webvr" visible="false">
+        <a-entity id="logo" rotation="0 45 0" position="15 -2 -35" scale=".25 .25 .25" visible="">
+            <!-- Right side -->
+            <a-entity rotation="-20 0 0" position="0 0 10.75" scale="1 0 1" visible="">
+                <a-animation attribute="scale" to="1 1 1" delay="200" dur="1000" easing="ease-out"></a-animation>
+                <a-box width="12.5" depth="1" height="30" color="#EF2D5E" position="0 15 0" material="" geometry="" rotation="" scale=""
+                    visible="">
+                    <!-- Left side -->
+                    <a-entity rotation="-140 0 0" position="0 15 0" scale="1 0 1" visible="">
+                        <a-animation attribute="scale" to="1 1 1" delay="800" dur="800" easing="ease-out"></a-animation>
+                        <a-box width="12.49" depth=".1" height="30" color="#24CAFF" position="0 15 -.52" shader="flat" material="" geometry="" rotation=""
+                            scale="" visible=""></a-box>
+                        <a-box width="12.5" depth="1" height="30" color="#EF2D5E" position="0 15 0" material="" geometry="" rotation="" scale=""
+                            visible=""></a-box>
+                    </a-entity>
+                </a-box>
+            </a-entity>
+            <!-- Cross-bar -->
+            <a-entity rotation="-90 0 0" position="0 8 7.5" scale="1 0 1" visible="">
+                <a-animation attribute="scale" to="1 1 1" delay="800" dur="600" easing="ease-out"></a-animation>
+                <a-box width="12.45" depth=".1" height="14" color="#F2E646" position="0 7 .52" shader="flat" material="" geometry="" rotation=""
+                    scale="" visible=""></a-box>
+                <a-box width="12.5" depth="1" height="14" color="#EF2D5E" position="0 7 0" material="" geometry="" rotation="" scale="" visible=""></a-box>
+            </a-entity>
+            <!-- Shadow -->
+            <a-entity rotation="-90 0 0" position="" scale="" visible="">
+                <a-plane width="12.5" height="20" position="0 0 0.1" pivot="0 -10 0" color="#21897C" material="" geometry="" rotation=""
+                    scale="" visible="">
+                    <a-animation attribute="scale" from="1 0 1" to="1 1 1" easing="ease-out" delay="600" dur="1000" fill="both"></a-animation>
+                </a-plane>
+            </a-entity>
+            <!-- Base -->
+            <a-entity position="" rotation="" scale="" visible="">
+                <a-plane width="30" height="30" color="#249889" rotation="-90 0 0" material="" geometry="" position="" scale="" visible="">
+                    <a-animation attribute="position" from="0 -40 0" to="0 0 0" dur="1600" easing="ease-out"></a-animation>
+                </a-plane>
+            </a-entity>
+        </a-entity>
+        <a-image src="#webvrlogo" scale="8 8 8" position="15 1 -18" rotation="0 225 0"></a-image>
+        <a-box click-show-hide color="blue" position="15, -0.5, -25" rotation=" 0 0 0"></a-box>
+    </a-entity>
+    <!-- Code Sample -->
+    <a-entity id="code" visible="false">
+        <a-image src="#console" width="2" position=" 25, 2, -25" rotation="0 -90 0" scale="10 10 10"></a-image>
+        <a-box click-hide-start show-video color="blue" position="20, -2, -20" rotation="0, 45, 0" scale="2 2 2"></a-box>
+    </a-entity>
+
+    <!-- Video Sample -->
+    <a-entity id="video" visible="false">
+        <a-video play-video src="#gearvrvid" width="2" position=" 35, 2, -25" rotation="0 -90 0" scale="10 10 10"></a-video>
+        <a-box click-hide-start color="blue" position="30, -2, -22" rotation="0, 45, 0" scale="2 2 2"></a-box>
+    </a-entity>
+
+    <!-- Final Text -->
+    <a-entity id="close" visible = "false" position = "35, 0, -27.5" rotation = "0 -90 0">
+       <a-entity mixin="font" text="text:Learn More:" position="0 5 0" material="color:black"></a-entity>
+       <a-entity mixin="font" text="text:http://github.com/misslivirose/learnvr" position="-3.5 3 0" material="color:black"></a-entity>
+       <a-entity mixin="font" text="text:@MissLiviRose" position="0 1 0" material="color:black"></a-entity>
+    </a-entity>
+</a-scene>
+
+</html>
