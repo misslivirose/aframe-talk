@@ -72,12 +72,18 @@
                      skybox.setAttribute('visible', false);
                      otherSkybox.setAttribute('visible', true);
                      stage.setAttribute('visible', false);
+                     document.getElementById("whyvrtext").setAttribute('visible', false);
+                     document.getElementById("whyvrbox").setAttribute('visible', false);
+
+
                 }
                 else
                 {
                     skybox.setAttribute("visible", true);
                     otherSkybox.setAttribute('visible', false);
                     stage.setAttribute('visible', true);
+                     document.getElementById("whyvrtext").setAttribute('visible', true);
+                     document.getElementById("whyvrbox").setAttribute('visible', true);
                 }
          
             });

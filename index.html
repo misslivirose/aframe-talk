@@ -2,7 +2,7 @@
 
 <head>
     <title>
-        Coldfront WebVR Talk
+        Full Stack Fest WebVR Talk
     </title>
 
     <script src="aframe.min.js"></script>
@@ -13,6 +13,7 @@
 <a-scene>
     <!-- Asset Setup -->
     <a-assets>
+        <img id="tweet" src="img\tweet.PNG">
         <img id="pic1" src="img\img1.jpg">
         <img id="gear" src="img\gear.png">
         <img id="vive" src="img\vive.png">
@@ -26,7 +27,7 @@
     </a-assets>
 
     <!-- Static scene elements -->
-    <a-camera position="0 1 0">
+    <a-camera position="0 1 2">
         <a-cursor></a-cursor>
     </a-camera>
     <a-light type="ambient" color="#fff"></a-light>
@@ -37,13 +38,14 @@
             <a-box width="10" length="10" depth="50" position="20 -5 -25" rotation="0 90 0" color="#DCDCDC"></a-box>
         </a-entity>
         <a-box id="ground" width="1" height=".1" color="green" position="0 -10 0" scale="100 100 100 "></a-box>
-        <!-- Tree -->
+        
+        <!-- Trees -->
         <a-entity id="tree" position="-15, 0, -15">
             <a-cone color="lightgreen" radius-bottom="5" radius-top="0" height="13" position="0 4 0"></a-cone>
             <a-cylinder color="brown" position="0 -3 0" height="3"></a-cylinder>
         </a-entity>
 
-        <a-entity position = " 35, 0, -17.5">
+        <a-entity position = " 35, 0, -13.5">
              <a-cone color="lightgreen" radius-bottom="5" radius-top="0" height="13" position="0 4 0"></a-cone>
             <a-cylinder color="brown" position="0 -3 0" height="3"></a-cylinder>
         </a-entity>
@@ -82,6 +84,12 @@
     <a-sky id="defaultsky" color="lightblue"></a-sky>
     <a-sky id="360sky" src="#sky" visible="false"></a-sky>
 
+    <!-- Pre-Title -->
+    <a-entity id ="placeholder">
+        <a-box width = "20" height = "10" position = " 0 0 -1"></a-box>
+        <a-image src="#tweet" position ="0 1 0" width="2.5"></a-image>
+    </a-entity>
+
     <!-- Title -->
     <a-entity id="title">
         <a-curvedimage src="#pic1" height="10.0" radius="8" theta-length="120" position="0 3 -5" rotation="0 120 0"></a-curvedimage>
@@ -106,8 +114,8 @@
     <!-- Why VR -->
     <a-entity id="whyVR">
         <a-entity click-change-sky geometry="primitive: sphere" position="-2 0 -30" material="src:#sky" scale="2 2 2"></a-entity>
-        <a-box click-hide-start show-webvr color="blue" position="1 0 -28"></a-box>
-        <a-entity mixin="font" text="text:Why VR?" position = "-10, 0, -22" material="color:black" rotation = "0 45 0" scale = "2 2 2"></a-entity>
+        <a-box id ="whyvrbox" click-hide-start show-webvr color="blue" position="1 0 -28"></a-box>
+        <a-entity id ="whyvrtext" mixin="font" text="text:Why VR?" position = "-10, 0, -22" material="color:black" rotation = "0 45 0" scale = "2 2 2"></a-entity>
     </a-entity>
 
     <!-- WebVR -->
@@ -160,8 +168,8 @@
 
     <!-- Video Sample -->
     <a-entity id="video" visible="false">
-        <a-video play-video src="#gearvrvid" width="2" position=" 35, 2, -25" rotation="0 -90 0" scale="10 10 10"></a-video>
-        <a-box click-hide-start color="blue" position="30, -2, -22" rotation="0, 45, 0" scale="2 2 2"></a-box>
+        <a-video play-video src="#gearvrvid" width="2" position=" 30, 2, -25" rotation="0 -90 0" scale="10 10 10"></a-video>
+        <a-box click-hide-start color="blue" position="28, -2, -22" rotation="0, 45, 0" scale="2 2 2"></a-box>
     </a-entity>
 
     <!-- Final Text -->
